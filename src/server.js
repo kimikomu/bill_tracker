@@ -2,17 +2,17 @@
 
 'use strict'
 
-const path = require('path');           // Node.js path module
+// const path = require('path');           // Node.js path module
 const express = require('express');     // Express Framework
 const config = require('./config');
 
 const app = express();
 
-app.set('view engine', 'pug');
+app.set('view engine', 'pug');  
 
-app.get('/', function (req, res) {
-    res.render('index')
-  });   
+// use main routes
+const mainRoutes = require('./routes');
+app.use(mainRoutes);
 
 // listen for the server
 app.listen(config.port, function() {
