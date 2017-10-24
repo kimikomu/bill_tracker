@@ -1,16 +1,23 @@
 // src/server.js
 
-const express = require('express');
+'use strict'
+
+const path = require('path');           // Node.js path module
+const express = require('express');     // Express Framework
 const config = require('./config');
 
 const app = express();
 
-// stand up the server
-app.use(function(req, res, next) {
-    res.end("The server is standing!");
-});
+app.set('view engine', 'pug');
+
+app.get('/', function (req, res) {
+    res.render('index')
+  });   
 
 // listen for the server
 app.listen(config.port, function() {
     console.log(`${config.appName} is listening on port ${config.port}`);
 });
+
+
+
