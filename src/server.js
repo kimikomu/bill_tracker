@@ -2,13 +2,14 @@
 
 'use strict'
 
-// const path = require('path');           // Node.js path module
+const path = require('path');           // Node.js path module
 const express = require('express');     // Express Framework
 const config = require('./config');
 
 const app = express();
 
-app.set('view engine', 'pug');  
+const publicPath = path.resolve(__dirname, './public');
+app.use(express.static(publicPath));
 
 // use main routes
 const mainRoutes = require('./routes');
