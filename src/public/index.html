@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bill Tracker</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>    
 </head>
 <body ng-app="billTrackerApp">
     <h1>Bill Tracker</h1>
         <div ng-controller="MainCtlr">
-            <a href="" ng-click="logTest()">Test Log</a>
+            
+            <label class="bill">{{bill.name}}</label>
+            <input ng-model="bill.name" class="bill" type="text"/>
+
+            <label class="amount">{{bill.amount}}</label>
+            <input ng-model="bill.amount" class="amount" type="text"/>
+            <div>
+                <a href="">Add</a>                    
+                <a href="">Edit</a>
+                <a href="" ng-click="logTest()">Test Log</a>
+            </div>
         </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>            
     <script src="scripts/app.js"></script>
 </body>
 </html>
