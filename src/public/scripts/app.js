@@ -7,6 +7,12 @@ angular.module('billTrackerApp', [])
         console.log("blur test");
     };
 
+    // add a bill to the scope
+    $scope.addNewBill = function() {
+        const bill = { name: 'New' };
+        $scope.bills.push(bill);
+    };
+
     $scope.helloConsole = dataService.helloConsole;
 
     // get bills into the scope
@@ -15,7 +21,7 @@ angular.module('billTrackerApp', [])
         $scope.bills = res.data;
     });
 
-    // remove bill from scope
+    // remove a bill from scope
     $scope.deleteBill = function(bill, $index) {
         dataService.deleteBill(bill);
         $scope.bills.splice($index, 1);
