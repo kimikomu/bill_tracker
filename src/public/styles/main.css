@@ -1,0 +1,21 @@
+a {
+    margin: 0 2px;
+    padding: 0.6em;
+}
+
+.page-header {
+    text-align:center;
+}
+
+.actions {
+    display: inline-block;
+    text-align: right;
+    margin: 2.9em 0.5em 0;
+    padding: 1.75em 0;
+}
+
+@media (max-width: 768px) {
+    .actions {
+        margin: 0 0.5em;
+    }
+}
