@@ -24,15 +24,15 @@ a {
     opacity: 0.5;
 }
 
-.actions .payed:after{
-    content: "ed";
-}
-
 .actions {
     display: inline-block;
     text-align: right;
     margin: 0 0.5em 0;
     padding: 1.75em 0;
+}
+
+.actions .payed:after{
+    content: "ed";
 }
 
 @media (max-width: 991px) {
