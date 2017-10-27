@@ -13,7 +13,7 @@
     <div class="page-header">
         <h1>Bill Tracker</h1>
     </div>
-    <div class="container">
+    <div ng-controller="MainCtlr" class="container">
             <div class="headers row">
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
                         <h3>Bill</h3>
@@ -24,22 +24,23 @@
                     </div>
                 </div>
         
-        <div ng-controller="MainCtlr" class="interaction row">
+        <div ng-repeat="bill in bills" class="interaction row">
             <div class="billInput col-xs-6 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editing" class="bill">{{bill.name}}</label>
                 <input ng-show="editing" ng-model="bill.name" class="bill" type="text"/>
             </div>
 
             <div class="amountInput col-xs-6 col-sm-4 col-md-6 col-lg-7">
-                <label ng-hide="editing" class="amount">{{bill.amount}}</label>
+                <label ng-hide="editing" class="amount">$ {{bill.amount}}</label>
                 <input ng-show="editing" ng-model="bill.amount" class="amount" type="text"/>
             </div>
-            <div class="actions">
-                <a href="">Add</a>                    
+            <div class="actions">                    
                 <a href="" ng-click="editing = !editing">Edit</a>
-                <a href="" ng-click="logTest()">Test Log</a>
+                <a href="" ng-click="logTest()">Payed</a>
+                <a href="">Delete</a>
             </div>
         </div>
+        {{bills}}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>            
     <script src="scripts/app.js"></script>
