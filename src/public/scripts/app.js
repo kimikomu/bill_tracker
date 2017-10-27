@@ -9,20 +9,36 @@ angular.module('billTrackerApp', [])
 
     $scope.helloConsole = dataService.helloConsole;
 
+    // get bills into the scope
     dataService.getBills(function(res) {
         console.log(res.data);
         $scope.bills = res.data;
     });
+
+    // remove bill from scope
+    $scope.deleteBill = function(bill, $index) {
+        dataService.deleteBill(bill);
+        $scope.bills.splice($index, 1);
+    };
 })
+// Services
 .service('dataService', function($http) {
     this.helloConsole = function() {
         console.log("Testing helloConsole");
     };
 
+    // get bills from json file
     this.getBills = function(callback) {
         $http.get('data/bills.json')
         .then(callback)
+    };
+
+    // delete service
+    this.deleteBill = function(bill) {
+        console.log(`The ${bill.name} bill has been deleted`);
     }
+
+
 });
 
 

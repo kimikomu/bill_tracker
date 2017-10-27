@@ -43,7 +43,7 @@
             <div class="actions">                    
                 <a href="" ng-click="editing = !editing">Edit</a>
                 <a href="" ng-click="bill.payed = !bill.payed" ng-class="{ 'payed': bill.payed }">Pay</a>
-                <a href="" ng-click="helloConsole()">Delete</a>
+                <a href="" ng-click="deleteBill(bill, $index)">Delete</a>
             </div>
         </div>
     </div>
