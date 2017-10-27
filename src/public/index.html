@@ -14,26 +14,32 @@
         <h1>Bill Tracker</h1>
     </div>
     <div ng-controller="MainCtlr" class="container">
-            <div class="headers row">
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <h3>Bill</h3>
-                    </div>
-        
-                    <div class="col-xs-6 col-sm-4 col-md-6 col-lg-7">
-                        <h3>Amount</h3>
-                    </div>
+        <div class="headers row">
+                <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
+                    <h3>Bill</h3>
                 </div>
+    
+                <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                    <h3>Amount</h3>
+                </div>
+                <div class="col-xs-5 col-sm-4 col-md-3 col-lg-3">
+                    <h3>Due Date</h3>
+                </div>
+            </div>
         
         <div ng-repeat="bill in bills" class="interaction row">
-            <div class="billInput col-xs-6 col-sm-4 col-md-3 col-lg-3">
+            <div class="billInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editing" class="bill">{{bill.name}}</label>
                 <input ng-show="editing" ng-model="bill.name" class="bill" type="text"/>
             </div>
-
-            <div class="amountInput col-xs-6 col-sm-4 col-md-6 col-lg-7">
+            <div class="amountInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editing" class="amount">$ {{bill.amount}}</label>
                 <input ng-show="editing" ng-model="bill.amount" class="amount" type="text"/>
             </div>
+            <div class="dueInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                    <label ng-hide="editing" class="due">$ {{bill.due}}</label>
+                    <input ng-show="editing" ng-model="bill.due" class="due" type="text"/>
+                </div>
             <div class="actions">                    
                 <a href="" ng-click="editing = !editing">Edit</a>
                 <a href="" ng-click="logTest()">Payed</a>

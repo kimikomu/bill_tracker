@@ -15,7 +15,7 @@ a {
     border-bottom: 2px solid #edeff0;
 }
 
-.billInput, .amountInput {
+.billInput, .amountInput, .dueInput {
     margin-top: 1.7em;
 }
 
@@ -26,8 +26,19 @@ a {
     padding: 1.75em 0;
 }
 
+@media (max-width: 991px) {
+    .actions {
+        float: right;
+    }
+}
+
 @media (max-width: 768px) {
+    .container {
+        margin: 0 2em;
+    }
+
     .actions {
         margin: 0 0.5em;
     }
 }
+
