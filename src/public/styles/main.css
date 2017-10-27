@@ -19,6 +19,15 @@ a {
     margin-top: 1.7em;
 }
 
+.container .payed {
+    background-color: #719c71;
+    opacity: 0.5;
+}
+
+.actions .payed:after{
+    content: "ed";
+}
+
 .actions {
     display: inline-block;
     text-align: right;

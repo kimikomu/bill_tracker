@@ -27,22 +27,22 @@
                 </div>
             </div>
         
-        <div ng-repeat="bill in bills" class="interaction row">
+        <div ng-repeat="bill in bills" class="interaction row" ng-class="{ 'payed': bill.payed }">
             <div class="billInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editing" class="bill">{{bill.name}}</label>
-                <input ng-show="editing" ng-model="bill.name" class="bill" type="text"/>
+                <input ng-show="editing" ng-model="bill.name" ng-blur="stopEditing()" class="bill" type="text"/>
             </div>
             <div class="amountInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editing" class="amount">$ {{bill.amount}}</label>
                 <input ng-show="editing" ng-model="bill.amount" class="amount" type="text"/>
             </div>
             <div class="dueInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
-                    <label ng-hide="editing" class="due">$ {{bill.due}}</label>
+                    <label ng-hide="editing" class="due">{{bill.due}}</label>
                     <input ng-show="editing" ng-model="bill.due" class="due" type="text"/>
                 </div>
             <div class="actions">                    
                 <a href="" ng-click="editing = !editing">Edit</a>
-                <a href="" ng-click="logTest()">Payed</a>
+                <a href="" ng-click="bill.payed = !bill.payed" ng-class="{ 'payed': bill.payed }">Pay</a>
                 <a href="">Delete</a>
             </div>
         </div>

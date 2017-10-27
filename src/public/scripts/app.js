@@ -1,8 +1,10 @@
 angular.module('billTrackerApp', [])
     // set up the custom directive
     .controller('MainCtlr', function($scope) {
-        $scope.logTest = function() {
-            console.log("Bill has been payed!");
+        $scope.stopEditing = function() {
+            // TODO: if user is not editing an input field (input type != text), "editing" = false
+            
+            console.log("blur test");
         };
 
         // test array
