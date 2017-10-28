@@ -10,7 +10,7 @@ angular.module('billTrackerApp')
 
     // add a bill to the scope
     $scope.addNewBill = function() {
-        const bill = { name: 'New' };
+        const bill = { name: 'New', amount: 0.00, due: 'Jan 1' };
         $scope.bills.unshift(bill);
     };
 
@@ -26,5 +26,10 @@ angular.module('billTrackerApp')
     $scope.deleteBill = function(bill, $index) {
         dataService.deleteBill(bill);
         $scope.bills.splice($index, 1);
+    };
+
+    // remove a bill from scope
+    $scope.saveBill = function(bill) {
+        dataService.saveBill(bill);
     };
 })

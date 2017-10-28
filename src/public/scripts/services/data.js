@@ -16,5 +16,10 @@ angular.module('billTrackerApp')
     // delete service
     this.deleteBill = function(bill) {
         console.log(`The ${bill.name} bill has been deleted`);
-    }
+    };
+
+    // save service
+    this.saveBill = function(bill) {
+        console.log(`The ${bill.name} bill has been saved`);
+    };
 });
