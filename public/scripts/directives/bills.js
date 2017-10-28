@@ -1,6 +1,6 @@
 'use strict';
 
-// replace <bills> tag with html from bills template
+// replace <bills> tag in index.html with html from bills template
 angular.module('billTrackerApp')
 .directive('bills', function() {
     return {

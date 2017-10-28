@@ -8,7 +8,13 @@ angular.module('billTrackerApp')
         console.log("blur test");
     };
 
-    // add a bill to the scope
+    // when the page loads, the data service attaches bills to scope
+    dataService.getBills(function(res) {
+        const bills = res.data;
+        $scope.bills = bills;
+    });
+
+    // add a bill to the front of the bill array
     $scope.addNewBill = function() {
         const bill = { name: 'New', amount: 0.00, due: 'Jan 1' };
         $scope.bills.unshift(bill);
@@ -16,11 +22,6 @@ angular.module('billTrackerApp')
 
     $scope.helloConsole = dataService.helloConsole;
 
-    // get bills into the scope
-    dataService.getBills(function(res) {
-        console.log(res.data);
-        $scope.bills = res.data;
-    });
 
     // remove a bill from scope
     $scope.deleteBill = function(bill, $index) {
@@ -32,7 +33,7 @@ angular.module('billTrackerApp')
         }
     };
 
-    // remove a bill from scope
+    
     $scope.saveBill = function(bill) {
         dataService.saveBill(bill);
     };
