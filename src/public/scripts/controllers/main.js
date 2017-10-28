@@ -25,7 +25,11 @@ angular.module('billTrackerApp')
     // remove a bill from scope
     $scope.deleteBill = function(bill, $index) {
         dataService.deleteBill(bill);
-        $scope.bills.splice($index, 1);
+        if (bill.payed) {
+            console.log('Delete disabled');
+        } else {
+            $scope.bills.splice($index, 1);
+        }
     };
 
     // remove a bill from scope

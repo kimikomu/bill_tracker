@@ -15,7 +15,9 @@ angular.module('billTrackerApp')
 
     // delete service
     this.deleteBill = function(bill) {
-        console.log(`The ${bill.name} bill has been deleted`);
+        if(!bill.payed) {
+            console.log(`The ${bill.name} bill has been deleted`);
+        };
     };
 
     // save service
