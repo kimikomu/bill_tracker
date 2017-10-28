@@ -8,7 +8,16 @@ a {
 }
 
 .headers {
+    margin-top: 30px;
     border-bottom: 2px solid #edeff0;
+}
+
+.new-bill {
+    width: 92.5%;
+}
+
+.new-bill-btn {
+    padding: 10px 12px
 }
 
 .interaction {
@@ -35,7 +44,21 @@ a {
     content: "ed";
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1200px) {
+    .new-bill-btn {
+        margin-right: -1.5em;
+    }
+}
+
+@media (max-width: 992px) {
+    .new-bill {
+        width: 100%;
+    }
+
+    .new-bill-btn {
+        margin-right: -2.5em;
+    }
+    
     .actions {
         float: right;
     }
