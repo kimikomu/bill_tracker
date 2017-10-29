@@ -3,13 +3,9 @@
 angular.module('billTrackerApp')
 // Services
 .service('dataService', function($http) {
-    this.helloConsole = function() {
-        console.log("Testing helloConsole");
-    };
-
     // get bills from json file
     this.getBills = function(callback) {
-        $http.get('data/bills.json')
+        $http.get('/routes/bills')
         .then(callback)
     };
 

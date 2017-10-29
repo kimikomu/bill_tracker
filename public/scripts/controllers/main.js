@@ -2,15 +2,10 @@
 
 angular.module('billTrackerApp')
 // set up the custom directive
-.controller('MainCtlr', function($scope, dataService) {   
-    $scope.stopEditing = function() {
-        // TODO: if user is not editing an input field (input type != text), "editing" = false
-        console.log("blur test");
-    };
-
+.controller('MainCtlr', function($scope, dataService) {  
     // when the page loads, the data service attaches bills to scope
     dataService.getBills(function(res) {
-        const bills = res.data;
+        const bills = res.data.bills;
         $scope.bills = bills;
     });
 
@@ -19,9 +14,6 @@ angular.module('billTrackerApp')
         const bill = { name: 'New', amount: 0.00, due: 'Jan 1' };
         $scope.bills.unshift(bill);
     };
-
-    $scope.helloConsole = dataService.helloConsole;
-
 
     // remove a bill from scope
     $scope.deleteBill = function(bill, $index) {

@@ -1,11 +1,15 @@
 // src/routes/index.js
 
+'use strict';
+
 const express = require('express');
+const bills = require('../../public/data/bills.json');
+
 const router = express.Router();
 
 // index route
-router.get('/', function (req, res) {
-    res.render('index')
+router.get('/bills', function (req, res) {
+    res.json({bills: bills});
   }); 
 
 
