@@ -2,5 +2,9 @@
 
 module.exports = {
     appName: 'Bill Tracker',
-    port: 3131
+    port: 3131,
+    db: {
+        host: 'localhost',
+        dbName: 'billTrackerDb'
+    }
 }

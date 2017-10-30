@@ -2,15 +2,19 @@
 
 'use strict';
 
-const express = require('express');
-const bills = require('../../public/data/bills.json');
+const router = require('express').Router();
+const mongoose = require('mongoose');
 
-const router = express.Router();
-
-// index route
+// GET
 router.get('/bills', function (req, res) {
-    res.json({bills: bills});
-  }); 
+  mongoose.model('Bill').find({}, function(err, bills) {
+    if (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+    res.json(bills);
+  });
+}); 
 
 
 // TODO: Add a POST route to create new bill entries
