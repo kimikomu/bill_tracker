@@ -21,11 +21,11 @@
                 <input ng-show="editName" ng-model="bill.name" ng-blur="editName = false" class="bill" type="text"/>
             </div>
             <div class="amountInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
-                <label ng-hide="editAmount" ng-click="editAmount = true" class="amount">$ {{bill.amount}}</label>
+                <label ng-hide="editAmount" ng-click="editAmount = true" class="amount">{{bill.amount | currency}}</label>
                 <input ng-show="editAmount" ng-model="bill.amount" ng-blur="editAmount = false" class="amount" type="text"/>
             </div>
             <div class="dueInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
-                    <label ng-hide="editDue" ng-click="editDue = true"  class="due">{{bill.due}}</label>
+                    <label ng-hide="editDue" ng-click="editDue = true"  class="due">{{bill.due | date : mediumDate}}</label>
                     <input ng-show="editDue" ng-model="bill.due" ng-blur="editDue = false" class="due" type="text"/>
                 </div>
             <div class="actions">                    
@@ -34,4 +34,5 @@
                 <a href="" ng-click="deleteBill(bill, $index)">Delete</a>
             </div>
         </div>
+        {{bills}}
     </div>

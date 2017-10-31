@@ -18,6 +18,7 @@ angular.module('billTrackerApp')
 
     // save service
     this.saveBill = function(bill) {
-        console.log(`The ${bill.name} bill has been saved`);
+        bill.newBill = false;
+        console.log(`Saved the ${bill} bill`);
     };
 });

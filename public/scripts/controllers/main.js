@@ -9,24 +9,26 @@ angular.module('billTrackerApp')
         $scope.bills = bills;
     });
 
-    // add a bill to the front of the bill array
+    // add a bill to the UI
     $scope.addNewBill = function() {
-        const bill = { name: 'New', amount: 0.00, due: 'Jan 1' };
+        const bill = { name: 'New', amount: 0.00, due: '2017-01-31', newBill: true };
         $scope.bills.unshift(bill);
     };
 
-    // remove a bill from scope
+    // remove a bill from UI
     $scope.deleteBill = function(bill, $index) {
-        dataService.deleteBill(bill);
         if (bill.payed) {
             console.log('Delete disabled');
         } else {
             $scope.bills.splice($index, 1);
+            dataService.deleteBill(bill);
         }
     };
-
-    
+ 
     $scope.saveBill = function(bill) {
-        dataService.saveBill(bill);
+            if(bill.newBill) {
+                dataService.saveBill(bill);
+            };
+                
     };
 })

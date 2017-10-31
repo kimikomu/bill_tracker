@@ -1,5 +1,5 @@
 [
-    {"name": "water", "amount": 137},
-    {"name": "car", "amount": 268},
-    {"name": "Verizon", "amount": 120}
+    {"name": "water", "amount": 137, "due": "2017-12-04", "newBill": false},
+    {"name": "car", "amount": 268, "due": "2017-12-21", "newBill": false},
+    {"name": "Verizon", "amount": 120, "due": "2017-12-28", "newBill": false}
 ]

@@ -7,12 +7,16 @@ const express = require('express');     // Express Framework
 const config = require('./config');
 const router = require('./routes');
 const mongoose = require('mongoose');
+const parser = require('body-parser');
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
-require('./models/bill.model.js');      // access to model
+
+// access to models
+require('./models/bill.model.js');      
 
 // handle static files
 app.use(express.static(publicPath));
+app.use(parser.json());
 
 // use router
 app.use('/routes', router);

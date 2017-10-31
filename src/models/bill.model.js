@@ -5,16 +5,17 @@ const mongoose = require('mongoose');
 // build Bill model
 const BillSchema = new mongoose.Schema({
     name: String,
-    amount: Number
-    // due: Date,
+    amount: Number,
+    due: Date,
     // isPayed: Boolean,
+    newBill: Boolean
     // created_at: { type: Date, default: Date.now }
 });
 const Bill = mongoose.model('Bill', BillSchema);
 
 module.exports = Bill;
 
-// On startup, seed database if database is empty
+// On startup, seed database if empty
 Bill.count({}, function(err, count) {
     if (err) {
       throw err;
