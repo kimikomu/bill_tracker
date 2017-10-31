@@ -11,7 +11,7 @@ angular.module('billTrackerApp')
 
     // add a bill to the UI
     $scope.addNewBill = function() {
-        const bill = { name: 'New', amount: 0.00, due: '2017-01-31', newBill: true };
+        const bill = { name: 'New', amount: 0.00, due: '2017-01-31', edited: true };
         $scope.bills.unshift(bill);
     };
 
@@ -26,9 +26,17 @@ angular.module('billTrackerApp')
     };
  
     $scope.saveBill = function(bill) {
-            if(bill.newBill) {
-                dataService.saveBill(bill);
+        if(bill.edited) {
+            dataService.saveBill(bill);
+        };
+    };
+
+    $scope.saveAllBills = function() {
+        const filteredBills = $scope.bills.filter(function(bill) {
+            if(bill.edited) {
+                return bill;
             };
-                
+        });
+        dataService.saveAllBills(filteredBills);               
     };
 })
