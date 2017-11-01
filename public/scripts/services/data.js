@@ -16,17 +16,36 @@ angular.module('billTrackerApp')
         };
     };
 
+    // save a bill
     this.saveBill = function(bill) {
+        let request;
+        if(!bill._id) {
+            request = $http.post('/routes/bills', bill);
+        };
         bill.edited = false;
-        console.log(`Saved the ${bill.name} bill`);
+        return $q.resolve(this.bill).then(function(results) {
+            console.log(`Saved the ${bill.name} bill`);
+        });
     };
 
-    // save service
+    // save all bills
     this.saveAllBills = function(bills) {
-        for (let i = 0; i < bills.length; i++) {
-            console.log(bills[i].name);
-            bills[i].edited = false;
-        };
-        console.log(`Saved ${bills.length} bills`);
+        // push each bill into an array
+        const queue = [];
+        bills.forEach(function(bill) {
+            let request;
+            // new bills get posted to the route
+            if(!bill._id) {
+                request = $http.post('/routes/bills', bill);
+            };
+            
+            bill.edited = false;
+            queue.push(request);
+            console.log(`${bill.name} was edited`);
+        });
+        // return all bills in the array
+        return $q.all(queue).then(function(results) {
+            console.log(`Saved ${bills.length} bills`);            
+        })
     };
 });
