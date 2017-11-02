@@ -14,16 +14,6 @@ angular.module('billTrackerApp')
         const bill = { name: 'New', amount: 0.00, due: '2017-01-31', edited: true };
         $scope.bills.unshift(bill);
     };
-
-    // remove a bill from UI
-    $scope.deleteBill = function(bill, $index) {
-        if (bill.payed) {
-            console.log('Delete disabled');
-        } else {
-            $scope.bills.splice($index, 1);
-            dataService.deleteBill(bill);
-        }
-    };
     
     // send an edited bill to the save service
     $scope.saveBill = function(bill) {
@@ -48,6 +38,16 @@ angular.module('billTrackerApp')
         $scope.bills.forEach(function(bill) {
             bill.edited = false;
         });
+    };
+
+    // remove a bill from UI
+    $scope.deleteBill = function(bill, $index) {
+        if (bill.payed) {
+            console.log('Delete disabled');
+        } else {
+            $scope.bills.splice($index, 1);
+            dataService.deleteBill(bill);
+        };
     };
 
 });

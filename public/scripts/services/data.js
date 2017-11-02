@@ -3,17 +3,10 @@
 angular.module('billTrackerApp')
 // Services
 .service('dataService', function($http, $q) {
-    // get bills from json file
+    // get bills
     this.getBills = function(callback) {
         $http.get('/routes/bills')
         .then(callback)
-    };
-
-    // delete service
-    this.deleteBill = function(bill) {
-        if(!bill.payed) {
-            console.log(`The ${bill.name} bill has been deleted`);
-        };
     };
 
     // save a bill
@@ -62,4 +55,15 @@ angular.module('billTrackerApp')
             console.log(`Saved ${bills.length} bills`);            
         })
     };
+
+    // delete a bill
+    this.deleteBill = function(bill) {
+        let request;
+        if(!bill.payed) {
+            request = $http.delete(`/routes/bills/${bill._id}`).then(function(result) {
+                console.log(`The ${bill.name} bill has been deleted`);
+            });
+        };
+    };
+    
 });
