@@ -1,6 +1,7 @@
 <div class="container">
-        <div ng-click="addNewBill()" class="new-bill row">
-            <button class="btn btn-primary col-xs-12 col-sm-3 col-md-2 col-lg-2 pull-right new-bill-btn" type="button" href="">+ Add New Bill</button>
+        <div class="flex-container">
+            <button ng-click="saveAllBills(bill)" class="btn btn-primary col-xs-12 col-sm-3 col-md-2 col-lg-2 save-all-btn" type="button" href="" >Save All</button>
+            <button ng-click="addNewBill()" class="btn btn-primary col-xs-12 col-sm-3 col-md-2 col-lg-2 new-bill-btn" type="button" href="">+ Add New Bill</button>
         </div>
         <div class="headers row">
             <div class="col-xs-3 col-sm-4 col-md-3 col-lg-3">
@@ -34,6 +35,6 @@
                 <a href="" ng-click="deleteBill(bill, $index)">Delete</a>
             </div>
         </div>
-        <button class="btn btn-primary" type="button" href="" ng-click="saveAllBills(bill)">Save All</button>
-        {{bills}}
+
+        <!-- {{bills}} -->
     </div>

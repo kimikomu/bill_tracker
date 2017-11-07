@@ -12,11 +12,13 @@ a {
     border-bottom: 2px solid #edeff0;
 }
 
-.new-bill {
-    width: 92.5%;
+.flex-container {
+    display: flex;
+    flex-direction: row-reverse;
 }
 
-.new-bill-btn {
+.new-bill-btn, .save-all-btn {
+    margin: 0 4px;
     padding: 10px 12px
 }
 
@@ -45,18 +47,11 @@ a {
 }
 
 @media (max-width: 1200px) {
-    .new-bill-btn {
-        margin-right: -1.5em;
-    }
 }
 
 @media (max-width: 992px) {
-    .new-bill {
+    .btn-row {
         width: 100%;
-    }
-
-    .new-bill-btn {
-        margin-right: -2.5em;
     }
     
     .actions {
@@ -67,10 +62,6 @@ a {
 @media (max-width: 768px) {
     .container {
         margin: 0 2em;
-    }
-
-    .new-bill-btn {
-        margin-right: -0.75em;
     }
 
     .actions {
