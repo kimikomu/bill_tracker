@@ -18,7 +18,8 @@ angular.module('billTrackerApp')
     // send an edited bill to the save service
     $scope.saveBill = function(bill) {
         if(bill.edited) {
-            dataService.saveBill(bill);
+            dataService.saveBill(bill)
+            .finally($scope.resetTodoState(bill));
         };
     };
 
@@ -29,15 +30,8 @@ angular.module('billTrackerApp')
                 return bill;
             };
         });
-        dataService.saveAllBills(filteredBills);
-        // .finally($scope.resetTodoState());             
-    };
-
-    // set edited to false;
-    $scope.resetTodoState = function() {
-        $scope.bills.forEach(function(bill) {
-            bill.edited = false;
-        });
+        dataService.saveAllBills(filteredBills)
+        .finally($scope.resetAll());             
     };
 
     // remove a bill from UI
@@ -48,6 +42,19 @@ angular.module('billTrackerApp')
             $scope.bills.splice($index, 1);
             dataService.deleteBill(bill);
         };
+    };
+
+    // reset bills;
+    $scope.resetAll = function() {
+        $scope.bills.forEach($scope.resetTodoState)
+    };
+
+    // reset a bill;
+    $scope.resetTodoState = function(bill) {
+        bill.edited = false;   
+        bill.nameColor = false;
+        bill.amountColor = false;
+        bill.dueColor = false;
     };
 
 });

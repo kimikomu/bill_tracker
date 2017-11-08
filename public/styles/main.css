@@ -18,8 +18,15 @@ a {
 }
 
 .new-bill-btn, .save-all-btn {
-    margin: 0 4px;
     padding: 10px 12px
+}
+
+.new-bill-btn {
+    margin-right: 4px;
+}
+
+.save-all-btn {
+    margin-left: 4px;
 }
 
 .interaction {
@@ -35,6 +42,15 @@ a {
     opacity: 0.5;
 }
 
+.editColor:before {
+    content: "*";
+    color: #e9240a;
+}
+
+.editColor {
+    color: #e9240a;
+}
+
 .actions {
     display: inline-block;
     text-align: right;
@@ -44,6 +60,10 @@ a {
 
 .actions .payed:after{
     content: "ed";
+}
+
+.show-768px {
+    display: none; 
 }
 
 @media (max-width: 1200px) {
@@ -66,6 +86,14 @@ a {
 
     .actions {
         margin: 0 0.5em;
+    }
+
+    .hide-768px {
+        display: none;
+    }
+
+    .show-768px {
+        display: inline; 
     }
 }
 
