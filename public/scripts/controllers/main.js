@@ -2,7 +2,8 @@
 
 angular.module('billTrackerApp')
 // set up the custom directive
-.controller('MainCtlr', function($scope, dataService) {  
+.controller('MainCtlr', function($window, $scope, dataService) {
+//-- Bills --
     // when the page loads, the data service attaches bills to scope
     dataService.getBills(function(res) {
         const bills = res.data.bills;
@@ -57,4 +58,10 @@ angular.module('billTrackerApp')
         bill.dueColor = false;
     };
 
+//-- Register --
+    // will need a new controller?
+    $scope.getRegister = function() {
+        $window.location.href = '/register';
+        console.log("test");
+    };
 });

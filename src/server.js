@@ -16,10 +16,12 @@ require('./models/bill.model.js');
 
 // handle static files
 app.use(express.static(publicPath));
+
+// server can parse json
 app.use(parser.json());
 
 // use router
-app.use('/routes', router);
+app.use('/', router);
 
 // listen for the server
 app.listen(config.port, function() {

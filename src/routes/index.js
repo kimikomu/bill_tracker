@@ -3,9 +3,24 @@
 'use strict';
 
 const router = require('express').Router();
+const path = require('path');
 const mongoose = require('mongoose');
 const Bill = require('../models/bill.model.js');
 
+const publicPath = path.resolve(__dirname, '../../public');    
+
+// -- Register Routes --
+// GET routes/register
+router.get('/register', function(req, res, next) {
+  res.sendFile(publicPath + '/templates/register.html');
+});
+
+// POST routes/register
+router.post('/register', function(req, res, next) {
+  return res.send('User created!');
+});
+
+// -- Bill Routes --
 // GET
 router.get('/bills', function (req, res, next) {
   Bill.find({}, function(err, bills) {

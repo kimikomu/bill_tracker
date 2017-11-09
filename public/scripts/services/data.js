@@ -5,7 +5,7 @@ angular.module('billTrackerApp')
 .service('dataService', function($http, $q) {
     // get bills
     this.getBills = function(callback) {
-        $http.get('/routes/bills')
+        $http.get('/bills')
         .then(callback)
     };
 
@@ -14,10 +14,10 @@ angular.module('billTrackerApp')
         let request;
         // create new bill
         if(!bill._id) {
-            request = $http.post('/routes/bills', bill);
+            request = $http.post('/bills', bill);
         // update preexisting bill
         } else {
-            request = $http.put(`/routes/bills/${bill._id}`, bill).then(function(result) {
+            request = $http.put(`/bills/${bill._id}`, bill).then(function(result) {
                 bill = result.data.bill;
                 return bill;
             });
@@ -37,10 +37,10 @@ angular.module('billTrackerApp')
             let request;
             // create new bills
             if(!bill._id) {
-                request = $http.post('/routes/bills', bill);
+                request = $http.post('/bills', bill);
             // update preexisting bills
             } else {
-                request = $http.put(`/routes/bills/${bill._id}`, bill).then(function(result) {
+                request = $http.put(`/bills/${bill._id}`, bill).then(function(result) {
                     bill = result.data.bill;
                     return bill;
                 });
@@ -60,10 +60,18 @@ angular.module('billTrackerApp')
     this.deleteBill = function(bill) {
         let request;
         if(!bill.payed) {
-            request = $http.delete(`/routes/bills/${bill._id}`).then(function(result) {
+            request = $http.delete(`/bills/${bill._id}`).then(function(result) {
                 console.log(`The ${bill.name} bill has been deleted`);
             });
         };
     };
+
+    // this.getRegister = function() {
+    //     $http.get('../register.html')
+    //     .then(function(response) {
+    //         const raw_html = response.data;
+    //         return raw_html;
+    //     });
+    // }
     
 });

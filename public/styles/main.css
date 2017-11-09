@@ -4,12 +4,19 @@ a {
 }
 
 .page-header {
-    text-align:center;
+    text-align: center;
 }
 
 .headers {
     margin-top: 30px;
     border-bottom: 2px solid #edeff0;
+}
+
+.all-width {
+    width: 100%;
+}
+.center {
+    margin: 02% 45%;
 }
 
 .flex-container {
