@@ -10,13 +10,12 @@ const User = require('../models/user.model.js');
 
 const publicPath = path.resolve(__dirname, '../../public');    
 
-// -- Register Routes --
-// GET
+// -- Register Routes -- //
+
 router.get('/register', function(req, res, next) {
   res.sendFile(publicPath + '/templates/register.html');
 });
 
-// POST
 router.post('/register', function(req, res, next) {
   const user = req.body;
   // all fields required
@@ -26,18 +25,31 @@ router.post('/register', function(req, res, next) {
       const err = new Error('Passwords do not match');
       err.status = 400;
       return next(err);
-    } else {
-      return res.send('Passwords are a match')
-    }
+    }; 
+
+    // create user object
+    const userData = {
+      username: req.body.username,
+      password: req.body.password
+    };
+
+    // use schema to insert user into db
+    User.create(userData, function(err, user) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
   } else {
-    const err = new Error('All fields required');
+    const err = new Error('All of fields required');
     err.status = 400;
     return next(err);
-  }
+  };
 });
 
-// -- Bill Routes --
-// GET
+// -- Bill Routes -- //
+
 router.get('/bills', function (req, res, next) {
   Bill.find({}, function(err, bills) {
     if (err) {
@@ -48,7 +60,6 @@ router.get('/bills', function (req, res, next) {
   });
 }); 
 
-// POST
 router.post('/bills', function(req, res, next) {
   const bill = req.body;
   Bill.create(bill, function(err, bill) {
@@ -60,7 +71,6 @@ router.post('/bills', function(req, res, next) {
   });
 });
 
-// PUT
 router.put('/bills/:id', function(req, res, next) {
   const id = req.params.id;
   const bill = req.body;
@@ -76,11 +86,10 @@ router.put('/bills/:id', function(req, res, next) {
   });
 });
 
-// DELETE
 router.delete('/bills/:id', function(req, res, next) {
   const id = req.params.id;
   const bill = req.body;
-
+  // remove bill from database
   Bill.findByIdAndRemove(id).exec().then(
     doc => {
       if(!doc) {

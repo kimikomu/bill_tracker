@@ -56,7 +56,7 @@ angular.module('billTrackerApp')
         })
     };
 
-    // delete a bill
+    // true delete!
     this.deleteBill = function(bill) {
         let request;
         if(!bill.payed) {
@@ -66,12 +66,4 @@ angular.module('billTrackerApp')
         };
     };
 
-    // this.getRegister = function() {
-    //     $http.get('../register.html')
-    //     .then(function(response) {
-    //         const raw_html = response.data;
-    //         return raw_html;
-    //     });
-    // }
-    
 });

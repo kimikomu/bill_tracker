@@ -20,6 +20,11 @@ app.use(express.static(publicPath));
 // server can parse json
 app.use(parser.json());
 
+// server can parse form input
+app.use(parser.urlencoded({
+    extended: true
+}));
+
 // use router
 app.use('/', router);
 
