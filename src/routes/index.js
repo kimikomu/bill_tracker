@@ -6,16 +6,17 @@ const router = require('express').Router();
 const path = require('path');
 const mongoose = require('mongoose');
 const Bill = require('../models/bill.model.js');
+// const User = require('../models/user.model.js');
 
 const publicPath = path.resolve(__dirname, '../../public');    
 
 // -- Register Routes --
-// GET routes/register
+// GET
 router.get('/register', function(req, res, next) {
   res.sendFile(publicPath + '/templates/register.html');
 });
 
-// POST routes/register
+// POST
 router.post('/register', function(req, res, next) {
   return res.send('User created!');
 });

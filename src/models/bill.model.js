@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-// build Bill model
+// Bill model
 const BillSchema = new mongoose.Schema({
     name: String,
     amount: Number,
