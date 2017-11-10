@@ -6,7 +6,7 @@ const router = require('express').Router();
 const path = require('path');
 const mongoose = require('mongoose');
 const Bill = require('../models/bill.model.js');
-// const User = require('../models/user.model.js');
+const User = require('../models/user.model.js');
 
 const publicPath = path.resolve(__dirname, '../../public');    
 
@@ -18,7 +18,22 @@ router.get('/register', function(req, res, next) {
 
 // POST
 router.post('/register', function(req, res, next) {
-  return res.send('User created!');
+  const user = req.body;
+  // all fields required
+  if (user.username && user.password && user.confirmPassword) {    
+    // confirm that passwords match
+    if (user.password !== user.confirmPassword) {
+      const err = new Error('Passwords do not match');
+      err.status = 400;
+      return next(err);
+    } else {
+      return res.send('Passwords are a match')
+    }
+  } else {
+    const err = new Error('All fields required');
+    err.status = 400;
+    return next(err);
+  }
 });
 
 // -- Bill Routes --
