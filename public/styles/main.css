@@ -3,6 +3,21 @@ a {
     padding: 0.6em;
 }
 
+.navbar-title {
+    /* margin-top: 22px; */
+    margin-left: 1em;
+}
+
+.nav-btn-group {
+    margin-right: 4em;
+}
+
+.navbar-text {
+    width: 4em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .page-header {
     text-align: center;
 }
@@ -10,13 +25,6 @@ a {
 .headers {
     margin-top: 30px;
     border-bottom: 2px solid #edeff0;
-}
-
-.all-width {
-    width: 100%;
-}
-.center {
-    margin: 02% 45%;
 }
 
 .flex-container {
@@ -87,6 +95,15 @@ a {
 }
 
 @media (max-width: 768px) {
+    .navbar-title {
+        margin-left: 0.5em;
+    }
+
+    .nav-btn-group {
+        margin-right: 0;
+        margin-left: 1.5em;        
+    }
+    
     .container {
         margin: 0 2em;
     }
