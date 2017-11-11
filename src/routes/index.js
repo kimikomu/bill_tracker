@@ -19,9 +19,9 @@ router.get('/register', function(req, res, next) {
 router.post('/register', function(req, res, next) {
   const user = req.body;
   // all fields required
-  if (user.username && user.password && user.confirmPassword) {    
+  if(user.username && user.password && user.confirmPassword) {    
     // confirm that passwords match
-    if (user.password !== user.confirmPassword) {
+    if(user.password !== user.confirmPassword) {
       const err = new Error('Passwords do not match');
       err.status = 400;
       return next(err);
@@ -35,7 +35,7 @@ router.post('/register', function(req, res, next) {
 
     // use schema to insert user into db
     User.create(userData, function(err, user) {
-      if (err) {
+      if(err) {
         return next(err);
       } else {
         return res.redirect('/');
@@ -52,7 +52,7 @@ router.post('/register', function(req, res, next) {
 
 router.get('/bills', function (req, res, next) {
   Bill.find({}, function(err, bills) {
-    if (err) {
+    if(err) {
       console.log(err);
       return res.status(500).json(err);
     };

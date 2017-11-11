@@ -17,14 +17,14 @@ module.exports = Bill;
 
 // On startup, seed database if empty
 Bill.count({}, function(err, count) {
-    if (err) {
+    if(err) {
       throw err;
     }
-    if (count > 0) return;
+    if(count > 0) return;
     
     const bills = require('./bill.seed.json');
     Bill.create(bills, function(err, newBills) {
-      if (err) {
+      if(err) {
         throw err;
       }
       console.log("DB seeded")
