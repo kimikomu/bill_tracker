@@ -10,6 +10,66 @@ const User = require('../models/user.model.js');
 
 const publicPath = path.resolve(__dirname, '../../public');    
 
+// -- TEMP Profile Routes -- //
+
+router.get('/bills', function (req, res, next) {
+  Bill.find({}, function(err, bills) {
+    if(err) {
+      console.log(err);
+      return res.status(500).json(err);
+    };
+    res.json({bills: bills});
+  });
+});
+
+
+router.get('/profile', function(req, res, next) {
+  if(!req.session.userId) {
+    const err = new Error('You are not Logged In');
+    err.status = 403;
+    return next(err);
+  };
+  User.findById(req.session.userId)
+    .exec(function(error, user) {
+      // const username = {username: user.username};
+      if(error) {
+        return next(error);
+      } else {
+        res.sendFile(publicPath + '/templates/profile.html');
+        // res.json({user: user});        
+      };
+    });
+});
+
+
+// -- Login Routes -- //
+
+router.get('/login', function(req, res, next) {
+  res.sendFile(publicPath + '/templates/login.html');
+});
+
+router.post('/login', function(req, res, next) {
+  const user = req.body;
+  // username and password exist and are authenticated
+  if(user.username && user.password) {
+    User.authenticate(user.username, user.password, function(error, user) {
+      if(error || !user) {
+        const err = new Error('Wrong username or password');
+        err.status = 401;
+        return next(err);
+      } else {
+        // create session id to store as cookie
+        req.session.userId = user._id;
+        return res.redirect('/profile');
+      }
+    });
+  } else {
+    const err = new Error('Username and password are required');
+    err.status = 401;
+    return next(err);
+  };
+});
+
 // -- Register Routes -- //
 
 router.get('/register', function(req, res, next) {
@@ -29,8 +89,8 @@ router.post('/register', function(req, res, next) {
 
     // create user object
     const userData = {
-      username: req.body.username,
-      password: req.body.password
+      username: user.username,
+      password: user.password
     };
 
     // use schema to insert user into db
@@ -38,7 +98,9 @@ router.post('/register', function(req, res, next) {
       if(err) {
         return next(err);
       } else {
-        return res.redirect('/');
+        // create session id to store as cookie
+        req.session.userId = user._id;        
+        return res.redirect('/profile');
       }
     });
   } else {

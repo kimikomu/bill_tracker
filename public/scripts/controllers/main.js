@@ -64,4 +64,11 @@ angular.module('billTrackerApp')
         $window.location.href = '/register';
         console.log("test");
     };
+
+//-- Login --
+    // will need a new controller?
+    $scope.getLogin = function() {
+        $window.location.href = '/login';
+        console.log("login");
+    };
 });
