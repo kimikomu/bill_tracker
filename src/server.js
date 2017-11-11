@@ -8,19 +8,25 @@ const config = require('./config');
 const router = require('./routes');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
+const session = require('express-session');
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
+
+// use sessions for tracking logins
+app.use(session({
+    secret: 'i heart sound design',
+    resave: true,
+    saveUninitialized: false
+}));
 
 // access to models
 require('./models/bill.model.js');      
 
-// handle static files
+// serve static files
 app.use(express.static(publicPath));
 
-// server can parse json
+// parse incoming requests
 app.use(parser.json());
-
-// server can parse form input
 app.use(parser.urlencoded({
     extended: true
 }));
