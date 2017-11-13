@@ -3,6 +3,17 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+// Bill model
+const BillSchema = new mongoose.Schema({
+    name: String,
+    amount: Number,
+    due: Date,
+    // isPayed: Boolean,
+    edited: { type: Boolean, default: false },
+    created_at: { type: Date, default: Date.now }
+});
+
+// User model
 const UserSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -13,8 +24,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    bills : [BillSchema]
 });
+
 // authenticate input against database documents
 UserSchema.statics.authenticate = function(username, password, callback) {
     User.findOne({username: username})

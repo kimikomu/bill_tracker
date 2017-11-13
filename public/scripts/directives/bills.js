@@ -5,7 +5,6 @@ angular.module('billTrackerApp')
 .directive('bills', function() {
     return {
         templateUrl: 'templates/bills.html',
-        controller: 'MainCtlr',
         replace: true 
     }
 })

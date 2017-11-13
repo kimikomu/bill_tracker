@@ -3,12 +3,18 @@
 angular.module('billTrackerApp')
 // set up the custom directive
 .controller('MainCtlr', function($window, $scope, dataService) {
-//-- Bills --
+// -- Bills -- //
     // when the page loads, the data service attaches bills to scope
     dataService.getBills(function(res) {
         const bills = res.data.bills;
+        const user = res.data.user;
         $scope.bills = bills;
+        $scope.user = user;
     });
+
+    $scope.home = function() {
+        $window.location.href = '/';
+    };
 
     // add a bill to the UI
     $scope.addNewBill = function() {
@@ -24,7 +30,7 @@ angular.module('billTrackerApp')
         };
     };
 
-    // send all edited bills to the save all service
+    // send all edited bills to the save-all service
     $scope.saveAllBills = function() {
         const filteredBills = $scope.bills.filter(function(bill) {
             if(bill.edited) {
@@ -58,17 +64,25 @@ angular.module('billTrackerApp')
         bill.dueColor = false;
     };
 
-//-- Register --
-    // will need a new controller?
+// -- Register -- //
+    // serve register page
     $scope.getRegister = function() {
         $window.location.href = '/register';
-        console.log("test");
     };
 
-//-- Login --
-    // will need a new controller?
-    $scope.getLogin = function() {
-        $window.location.href = '/login';
-        console.log("login");
+// -- Login -- //
+    // serve login page
+    // $scope.getLogin = function() {
+    //     $window.location.href = '/login';
+    // };
+
+    // user is logged in
+    // $scope.Login = function(user) {
+    //     user.loggedIn = true;
+    // };
+
+    // user is logged in
+    $scope.LogOut = function(user) {
+        user.loggedIn = true;
     };
 });

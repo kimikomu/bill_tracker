@@ -1,11 +1,12 @@
 <nav class='navbar navbar-default navbar-fixed-top'>
   <div class="container-fluid">
     <div class="navbar-header">
-        <h2 class="navbar-title"><a href="#">Bill Tracker</a></h2>
+        <h2 class="navbar-title"><a href="#" ng-click="home()">Bill Tracker</a></h2>
     </div>
     <div class="nav-btn-group navbar-right">
         <button type="button" ng-click="getRegister()" class="btn btn-default navbar-btn"><p class="navbar-text">Register</p></button>
-        <button type="button" ng-click="getLogin()" class="btn btn-default navbar-btn"><p class="navbar-text">Login</p></button>
+        <!-- <button type="button" ng-click="getLogin(user)" ng-show="!user.loggedIn" class="btn btn-default navbar-btn"><p class="navbar-text">Login</p></button> -->
+        <button type="button" ng-click="LogOut(user)" ng-if="currentUser" class="btn btn-default navbar-btn"><p class="navbar-text">Logout</p></button>
     </div>
   </div>
 </nav>

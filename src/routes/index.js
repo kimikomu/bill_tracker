@@ -6,7 +6,7 @@ const router = require('express').Router();
 const path = require('path');
 const mongoose = require('mongoose');
 const Bill = require('../models/bill.model.js');
-const User = require('../models/user.model.js');
+const User = require('../models/models.js');
 
 const publicPath = path.resolve(__dirname, '../../public');    
 
@@ -20,6 +20,13 @@ router.get('/bills', function (req, res, next) {
     };
     res.json({bills: bills});
   });
+  // User.find({}, function(err, user) {
+  //   if(err) {
+  //     console.log(err);
+  //     return res.status(500).json(err);
+  //   };
+  //   res.json({user: user});    
+  // });
 });
 
 
@@ -60,7 +67,7 @@ router.post('/login', function(req, res, next) {
       } else {
         // create session id to store as cookie
         req.session.userId = user._id;
-        return res.redirect('/profile');
+        return res.redirect('/');
       }
     });
   } else {
@@ -100,7 +107,7 @@ router.post('/register', function(req, res, next) {
       } else {
         // create session id to store as cookie
         req.session.userId = user._id;        
-        return res.redirect('/profile');
+        return res.redirect('/');
       }
     });
   } else {

@@ -8,7 +8,10 @@ const BillSchema = new mongoose.Schema({
     amount: Number,
     due: Date,
     // isPayed: Boolean,
-    edited: Boolean // set default to false
+    edited: {
+      type: Boolean,
+      default: false
+    }
     // created_at: { type: Date, default: Date.now }
 });
 const Bill = mongoose.model('Bill', BillSchema);
