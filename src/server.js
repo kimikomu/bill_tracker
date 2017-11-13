@@ -8,21 +8,22 @@ const config = require('./config');
 const router = require('./routes');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
-const session = require('express-session');
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
 
-// use sessions for tracking logins
-app.use(session({
-    secret: 'i heart sound design',
-    resave: true,
-    saveUninitialized: false
-}));
+// const session = require('express-session');
 
-app.use(function (req, res, next) {
-    res.locals.currentUser = req.session.userId;
-    next();
-});
+// use sessions for tracking logins
+// app.use(session({
+//     secret: 'i heart sound design',
+//     resave: true,
+//     saveUninitialized: false
+// }));
+
+// app.use(function (req, res, next) {
+//     res.locals.currentUser = req.session.userId;
+//     next();
+// });
 
 // access to models
 require('./models/bill.model.js');      
