@@ -64,25 +64,4 @@ angular.module('billTrackerApp')
         bill.dueColor = false;
     };
 
-// -- Register -- //
-    // serve register page
-    $scope.getRegister = function() {
-        $window.location.href = '/register';
-    };
-
-// -- Login -- //
-    // serve login page
-    // $scope.getLogin = function() {
-    //     $window.location.href = '/login';
-    // };
-
-    // user is logged in
-    // $scope.Login = function(user) {
-    //     user.loggedIn = true;
-    // };
-
-    // user is logged in
-    $scope.LogOut = function(user) {
-        user.loggedIn = true;
-    };
 });
