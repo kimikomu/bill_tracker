@@ -7,11 +7,12 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
     // when the page loads, the data service attaches bills to scope
     dataService.getBills(function(res) {
         const bills = res.data.bills;
-        const user = res.data.user;
         $scope.bills = bills;
-        $scope.user = user;
+        // const user = res.data.user;        
+        // $scope.user = user;
     });
 
+    // get to home page
     $scope.home = function() {
         $window.location.href = '/';
     };
@@ -24,7 +25,9 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
     
     // send an edited bill to the save service
     $scope.saveBill = function(bill) {
-        if(bill.edited) {
+        if(bill.payed) {
+            $scope.resetTodoState(bill);
+        } else if(bill.edited) {
             dataService.saveBill(bill)
             .finally($scope.resetTodoState(bill));
         };
@@ -33,7 +36,9 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
     // send all edited bills to the save-all service
     $scope.saveAllBills = function() {
         const filteredBills = $scope.bills.filter(function(bill) {
-            if(bill.edited) {
+            if(bill.payed) {
+                $scope.resetTodoState(bill);
+            } else if(bill.edited) {
                 return bill;
             };
         });
@@ -43,8 +48,8 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
 
     // remove a bill from UI
     $scope.deleteBill = function(bill, $index) {
-        if (bill.payed) {
-            console.log('Delete disabled');
+        if(bill.payed) {
+            $scope.resetTodoState(bill);
         } else {
             $scope.bills.splice($index, 1);
             dataService.deleteBill(bill);
