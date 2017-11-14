@@ -4,7 +4,6 @@ a {
 }
 
 .navbar-title {
-    /* margin-top: 22px; */
     margin-left: 1em;
 }
 
@@ -119,5 +118,39 @@ a {
     .show-768px {
         display: inline; 
     }
+
+    /* datepicker */
+    datepicker, .datepicker, [datepicker],
+    ._720kb-datepicker-calendar-header,
+    ._720kb-datepicker-calendar-body,
+    ._720kb-datepicker-calendar-days-header,
+    ._720kb-datepicker-calendar-years-pagination-pages {
+        position: relative;
+        right: 45px;
+    }
+
+    ._720kb-datepicker-calendar {
+        min-width: 5px;
+        width: 185px;
+        margin-left: -20px;
+    }
+
+    ._720kb-datepicker-calendar-days-header,        
+    ._720kb-datepicker-calendar-header,
+    ._720kb-datepicker-calendar-years-pagination-pages {
+        width: 105%;                
+        margin-left: 46px;
+    }
+
+    ._720kb-datepicker-calendar-header-middle, 
+    ._720kb-datepicker-calendar-month {
+        width: 128px;
+    }
+
+    ._720kb-datepicker-calendar-body {
+        width: 101%;
+        margin-left: 46px;
+    }
+
 }
 

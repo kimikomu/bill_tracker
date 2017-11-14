@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('billTrackerApp')
-// set up the custom directive
-.controller('MainCtlr', function($window, $scope, dataService) {
+const billTrackerApp = angular.module('billTrackerApp');
+
+billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
 // -- Bills -- //
     // when the page loads, the data service attaches bills to scope
     dataService.getBills(function(res) {
