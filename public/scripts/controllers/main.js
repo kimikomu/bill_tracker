@@ -23,31 +23,21 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
         const bill = { name: 'New', amount: 0.00, due: currentDate, edited: true, payed: false };
         $scope.bills.unshift(bill);
     };
-
-    $scope.payToggle = function(bill) {
-        if(bill.payed) {
-            $scope.resetTodoState(bill);
-        } else {
-            dataService.payBill(bill);
-        };
-    };
     
     // send an edited bill to the save service
     $scope.saveBill = function(bill) {
-        if(bill.payed) {
-            $scope.resetTodoState(bill);
-        } else if(bill.edited) {
+        console.log('Made it to controller');
+        if(bill.edited) {
             dataService.saveBill(bill)
             .finally($scope.resetTodoState(bill));
+            console.log('Made it inside bill.edited block');
         };
     };
 
     // send all edited bills to the save-all service
     $scope.saveAllBills = function() {
         const filteredBills = $scope.bills.filter(function(bill) {
-            if(bill.payed) {
-                $scope.resetTodoState(bill);
-            } else if(bill.edited) {
+            if(bill.edited) {
                 return bill;
             };
         });
@@ -76,6 +66,7 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
         bill.nameColor = false;
         bill.amountColor = false;
         bill.dueColor = false;
+        bill.payedColor = false;
     };
 
 });

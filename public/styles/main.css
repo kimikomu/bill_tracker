@@ -72,17 +72,9 @@ a {
     padding: 1.75em 0;
 }
 
-.actions .payed {
-    color: #062e00;
-    opacity: 1;
-    font-weight: bold;    
-}
-
-.actions .payed:after{
-    content: "ed";
-    color: #062e00; 
-    opacity: 1;  
-    font-weight: bold;
+.payedInput {
+    margin-top: 14px;
+    margin-bottom: 0;
 }
 
 .show-768px {

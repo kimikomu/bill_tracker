@@ -30,10 +30,13 @@
                     <datepicker date-format="MMM dd yyyy">
                         <input ng-show="editDue" ng-model="bill.due" ng-blur="editDue = false" class="due" type="text"/>
                     </datepicker>
-            </div>           
-            <div class="actions">                    
+            </div>
+            <div class="payedInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
+                <label ng-class="{'editColor': bill.payedColor}" class="paid">Paid</label>
+                <input ng-model="bill.payed" ng-click="bill.payedColor=true; bill.edited=true" class="paid" type="checkbox"/>
+            </div>                
+            <div class="actions">
                 <a href="" ng-click="saveBill(bill); bill.nameColor=false; bill.amountColor=false; bill.dueColor=false">Save</a>
-                <a href="" ng-click="bill.payed = !bill.payed; resetTodoState(bill)" ng-class="{ 'payed': bill.payed }">Pay</a>
                 <a href="" ng-click="deleteBill(bill, $index)">Delete</a>
             </div>
         </div>
