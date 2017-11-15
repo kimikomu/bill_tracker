@@ -48,10 +48,12 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
     // remove a bill from UI
     $scope.deleteBill = function(bill, $index) {
         if(bill.payed) {
-            $scope.resetTodoState(bill);
+            alert('You cannot delete a paid bill');
         } else {
-            $scope.bills.splice($index, 1);
-            dataService.deleteBill(bill);
+            if(confirm('Are you sure you want to delete this bill?')){
+                $scope.bills.splice($index, 1);
+                dataService.deleteBill(bill);
+            };
         };
     };
 
