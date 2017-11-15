@@ -19,8 +19,17 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
 
     // add a bill to the UI
     $scope.addNewBill = function() {
-        const bill = { name: 'New', amount: 0.00, due: '2017-01-31', edited: true };
+        let currentDate = Date.now();
+        const bill = { name: 'New', amount: 0.00, due: currentDate, edited: true, payed: false };
         $scope.bills.unshift(bill);
+    };
+
+    $scope.payToggle = function(bill) {
+        if(bill.payed) {
+            $scope.resetTodoState(bill);
+        } else {
+            dataService.payBill(bill);
+        };
     };
     
     // send an edited bill to the save service

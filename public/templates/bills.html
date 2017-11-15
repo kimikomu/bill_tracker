@@ -16,7 +16,7 @@
             </div>
         </div>
         
-        <div ng-class="{ 'edited': bill.edited, 'payed': bill.payed }" ng-repeat="bill in bills" ng-init="bill.payed = false" class="interaction row">
+        <div ng-class="{ 'edited': bill.edited, 'payed': bill.payed }" ng-repeat="bill in bills" class="interaction row">
             <div class="billInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                 <label ng-hide="editName" ng-click="editName=!bill.payed; bill.edited=!bill.payed; bill.nameColor=!bill.payed" ng-class="{'editColor': bill.nameColor}" class="bill">{{bill.name}}</label>
                 <input ng-show="editName" ng-model="bill.name" ng-blur="editName = false" class="bill" type="text"/>
@@ -27,10 +27,8 @@
             </div>
             <div class="dueInput col-xs-4 col-sm-4 col-md-3 col-lg-3">
                     <label ng-hide="editDue" ng-click="editDue=!bill.payed; bill.edited=!bill.payed; bill.dueColor=!bill.payed" ng-class="{'editColor': bill.dueColor}" class="due"><span class="show-768px">{{bill.due | date: 'MM/dd/yy'}}</span><span class="hide-768px">{{bill.due | date: 'mediumDate'}}</span></label>
-                    <datepicker>
-                        <div class="input-group">
-                            <input ng-show="editDue" ng-model="bill.due" ng-blur="editDue = false" class="due" type="text"/>
-                        </div>
+                    <datepicker date-format="MMM dd yyyy">
+                        <input ng-show="editDue" ng-model="bill.due" ng-blur="editDue = false" class="due" type="text"/>
                     </datepicker>
             </div>           
             <div class="actions">                    

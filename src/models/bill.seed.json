@@ -1,5 +1,5 @@
 [
-    {"name": "water", "amount": 137, "due": "2017-12-04", "edited": false},
-    {"name": "car", "amount": 268, "due": "2017-12-21", "edited": false},
-    {"name": "Verizon", "amount": 120, "due": "2017-12-28", "edited": false}
+    {"name": "water", "amount": 137, "due": "2017-12-04", "edited": false, "payed": false},
+    {"name": "car", "amount": 268, "due": "2017-12-21", "edited": false, "payed": false},
+    {"name": "Verizon", "amount": 120, "due": "2017-12-28", "edited": false, "payed": false}
 ]

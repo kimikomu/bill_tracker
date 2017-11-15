@@ -6,13 +6,13 @@ const mongoose = require('mongoose');
 const BillSchema = new mongoose.Schema({
     name: String,
     amount: Number,
-    due: Date,
-    // isPayed: Boolean,
+    due: { type: Date, default: Date.now },
+    payed: Boolean,
     edited: {
       type: Boolean,
       default: false
-    }
-    // created_at: { type: Date, default: Date.now }
+    },
+    created_at: { type: Date, default: Date.now }
 });
 const Bill = mongoose.model('Bill', BillSchema);
 

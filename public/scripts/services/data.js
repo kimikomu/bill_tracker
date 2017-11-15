@@ -29,6 +29,23 @@ angular.module('billTrackerApp')
         });
     };
 
+    // this.payBill = function(bill) {
+    //     let request;
+    //     // create new bill  
+    //     if(!bill._id) {
+    //         alert('Please save the new bill');
+    //     // update preexisting bill
+    //     } else {
+    //         request = $http.put(`/bills/${bill._id}`, bill).then(function(result) {
+    //             bill = result.data.bill;
+    //             return bill;
+    //         });
+    //     };        
+    //     return $q.resolve(this.bill).then(function(result) {
+    //         console.log(`Payed the ${bill.name} bill`);
+    //     });
+    // };
+
     // save all bills
     this.saveAllBills = function(bills) {
         // push each bill into an array
