@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const BillSchema = new mongoose.Schema({
     name: String,
     amount: Number,
-    due: { type: Date, default: Date.now },
+    due: Date,
     payed: Boolean,
     edited: {
       type: Boolean,

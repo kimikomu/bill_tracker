@@ -19,15 +19,24 @@
 </head>
 <body ng-app="billTrackerApp">
 <div ng-controller="MainCtlr">
+
     <nav class="navbar"><div ng-include src="'templates/navbar.html'"></nav>
     <div class="page-header">
-        <h1>Bill Tracker</h1>
+        <h1 id="month"></h1>
     </div>
-    <div>
+    <div>   
         <bills></bills>
     </div>
     {{bills}}
-
 </div>
+<script>
+    let today = new Date();
+    const month = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"][today.getMonth()];
+    let dateStr = month + ' ' + today.getFullYear();
+
+    document.getElementById("month").innerHTML = dateStr;
+
+</script>
 </body>
 </html>
