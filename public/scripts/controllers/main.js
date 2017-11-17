@@ -1,6 +1,7 @@
 'use strict';
 
 const billTrackerApp = angular.module('billTrackerApp');
+let COUNTER = 0;
 
 billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
 // -- Bills -- //
@@ -8,13 +9,85 @@ billTrackerApp.controller('MainCtlr', function($window, $scope, dataService) {
     dataService.getBills(function(res) {
         const bills = res.data.bills;
         $scope.bills = bills;
-        // const user = res.data.user;        
-        // $scope.user = user;
+
+        // start with current month
+        $scope.setDate(0);
     });
 
     // get to home page
     $scope.home = function() {
         $window.location.href = '/';
+    };
+
+    // Header is the month and year
+    $scope.setDate = function(number) {
+        let today = new Date();
+        let thisMonth = today.getMonth() * 1;
+        let monthToView = (thisMonth + number) % 12;
+        let dateStr;
+
+        const month = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+            
+        // temp solution for new year change
+        if(monthToView === 10 || monthToView === 11) {
+            dateStr = `${month[monthToView]} ${today.getFullYear()}`;
+        } else {
+            dateStr = `${month[monthToView]} ${today.getFullYear() + 1}`;
+        }
+        document.getElementById("month").innerHTML = dateStr;
+    };
+
+    // show next month's bills
+    $scope.nextMonth = function(bills) {
+        // counter loops for the 12 months
+        COUNTER += 1;
+        if(COUNTER > 11) {
+            COUNTER = 0;
+        }
+
+        // keep header and current month's bills in sync 
+        $scope.setDate(COUNTER);
+
+        // get the month's bills
+        $scope.billsByMonth();
+    };
+
+    // show previous month's bills
+    $scope.previousMonth = function(bills) {
+        // counter loops for the 12 months
+        COUNTER -= 1;
+        if(COUNTER > 11) {
+            COUNTER = 0;
+        }
+
+        // keep header and current month's bills in sync 
+        $scope.setDate(COUNTER);
+
+        // get the month's bills
+        $scope.billsByMonth();
+    };
+
+    // filter for bills by month
+    $scope.billsByMonth = function() {
+        // include all bills in $scope
+        dataService.getBills(function(res) {
+            const bills = res.data.bills;
+            $scope.bills = bills;
+
+            let today = new Date();
+            let thisMonth = today.getMonth();
+
+            let filteredBills = $scope.bills.filter(function(bill) {
+                let billDue = bill.due;
+                let billDueToDate = new Date(billDue);
+
+                if(billDueToDate.getMonth() === (thisMonth + COUNTER) % 12) {
+                    return bill;
+                };
+            });
+            $scope.bills = filteredBills;
+        });
     };
 
     // add a bill to the UI
