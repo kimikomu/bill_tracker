@@ -1,6 +1,28 @@
 a {
     margin: 0 2px;
     padding: 0.6em;
+    color: #0c363b;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    color: #196870;
+}
+
+.btn-default {
+    box-shadow: 1px .5px .5px #1d1d1d;
+}
+
+.btn-primary {
+    background-color: #043f3c;
+}
+
+.btn-primary:focus {
+    background-color: #06615b;
+}
+
+.btn-primary:hover {
+    background-color: #06615b;
 }
 
 .navbar-title {
