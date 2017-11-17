@@ -20,7 +20,7 @@ router.get('/bills', function (req, res, next) {
     };
     res.json({bills: bills});
   });
-}); 
+});
 
 router.post('/bills', function(req, res, next) {
   const bill = req.body;

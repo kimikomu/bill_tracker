@@ -8,13 +8,8 @@ a {
 }
 
 .nav-btn-group {
-    margin-right: 4em;
-}
-
-.navbar-text {
-    width: 4em;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-right: 4em;
 }
 
 .page-header {
@@ -24,6 +19,25 @@ a {
 .headers {
     margin-top: 30px;
     border-bottom: 2px solid #edeff0;
+}
+
+.prev, .next {
+    width: 4em;
+    height: 10px;
+}
+
+.prev {
+    margin-left: 2px;
+}
+.next {
+    margin-right: 2px;
+}
+
+.prev-btn {
+    margin-right: 2px;
+}
+.next-btn {
+    margin-left: 2px;
 }
 
 .flex-container {
@@ -100,8 +114,13 @@ a {
     }
 
     .nav-btn-group {
+        margin-top: 0;
         margin-right: 0;
         margin-left: 1.5em;        
+    }
+
+    .page-header {
+        margin-top: 120px;
     }
     
     .container {
