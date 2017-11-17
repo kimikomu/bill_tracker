@@ -2,28 +2,14 @@
 
 'use strict'
 
-const path = require('path');           // Node.js path module
-const express = require('express');     // Express Framework
+const path = require('path');
+const express = require('express');
 const config = require('./config');
 const router = require('./routes');
 const mongoose = require('mongoose');
 const parser = require('body-parser');
 const app = express();
 const publicPath = path.resolve(__dirname, '../public');
-
-// const session = require('express-session');
-
-// use sessions for tracking logins
-// app.use(session({
-//     secret: 'i heart sound design',
-//     resave: true,
-//     saveUninitialized: false
-// }));
-
-// app.use(function (req, res, next) {
-//     res.locals.currentUser = req.session.userId;
-//     next();
-// });
 
 // access to models
 require('./models/bill.model.js');      
@@ -48,6 +34,7 @@ app.listen(config.port, function() {
 // connect to the database
 const db = `mongodb://${config.db.host}/${config.db.dbName}`;
 
+// notify the user
 mongoose.connection.openUri(db, function(err) {
     if(err) {
         console.log('Failed to connect to database');

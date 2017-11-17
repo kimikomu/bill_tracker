@@ -18,14 +18,13 @@
 </head>
 <body ng-app="billTrackerApp">
 <div ng-controller="MainCtlr">
-
-    <nav class="navbar"><div ng-include src="'templates/navbar.html'"></nav>
+    <nav class="navbar"><div ng-include src="'templates/navbar.html'"></nav><!-- navbar -->
     <div class="page-header">
         <h1 id="month"></h1><button class="btn btn-default prev-btn" ng-click="previousMonth()" href="#"><p class="prev">previous</p></button><button class="btn btn-default next-btn" ng-click="nextMonth()" href="#"><p class="next">next</p></button>
-    </div>
-    <div>   
+    </div><!-- page header -->
+    <div>
         <bills></bills>
-    </div>
+    </div><!-- bill directive -->
 </div>
 </body>
 </html>
